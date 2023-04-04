@@ -49,14 +49,12 @@ async function handleEvent(event) {
     type: 'text',
     text: '處理事情了喔!',
   };
-
+  return client.pushMessage(event.source.userId, [userInfo]);
   if (echo) {
     // setTimeout(() => {
     //   client.pushMessage([event.source.userId], [pushMessage]);
     // }, 10000);
     return client.replyMessage(event.replyToken, userInfo);
-    // return client.pushMessage([event.source.userId], [userInfo]);
-    // return Promise.resolve(`已設定提醒: ${task}`);
   }
 }
 
