@@ -49,11 +49,11 @@ async function handleEvent(event) {
     type: 'text',
     text: '處理事情了喔!',
   };
-  client.pushMessage(event.source.userId, [pushMessage]);
+
   if (echo) {
-    // setTimeout(() => {
-    //   client.pushMessage([event.source.userId], [pushMessage]);
-    // }, 10000);
+    setTimeout(() => {
+      client.pushMessage(event.source.userId, [pushMessage]);
+    }, 10000);
     return client.replyMessage(event.replyToken, userInfo);
   }
 }
