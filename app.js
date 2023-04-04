@@ -43,7 +43,7 @@ async function handleEvent(event) {
   if (echo) {
     // client.pushMessage(event.replyToken, echo);
     setTimeout(() => {
-      client.pushMessage(event.source.userId, '處理事情了喔!');
+      client.pushMessage([event.source.userId], '處理事情了喔!');
     }, 10000);
     return client.replyMessage(event.replyToken, echo);
   }
