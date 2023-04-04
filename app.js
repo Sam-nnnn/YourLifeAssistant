@@ -40,11 +40,15 @@ async function handleEvent(event) {
     text: '已加入事件排程',
   };
 
+  const pushMessage = {
+    type: 'text',
+    text: '處理事情了喔!',
+  };
+
   if (echo) {
-    // client.pushMessage(event.replyToken, echo);
-    // setTimeout(() => {
-    //   client.pushMessage([event.source.userId], '處理事情了喔!');
-    // }, 10000);
+    setTimeout(() => {
+      client.pushMessage([event.source.userId], pushMessage);
+    }, 10000);
     return client.replyMessage(event.replyToken, echo);
   }
 }
