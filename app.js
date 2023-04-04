@@ -49,7 +49,7 @@ async function handleEvent(event) {
     type: 'text',
     text: '處理事情了喔!',
   };
-  return client.pushMessage(event.source.userId, [userInfo]);
+  client.pushMessage(event.source.userId, [pushMessage]);
   if (echo) {
     // setTimeout(() => {
     //   client.pushMessage([event.source.userId], [pushMessage]);
