@@ -49,9 +49,8 @@ async function handleEvent(event) {
     type: 'text',
     text: '處理事情了喔!',
   };
-
+  client.pushMessage([event.source.userId], [userInfo]);
   if (echo) {
-    client.pushMessage([event.source.userId], [userInfo]);
     setTimeout(() => {
       client.pushMessage([event.source.userId], [pushMessage]);
     }, 10000);
