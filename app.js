@@ -51,9 +51,9 @@ async function handleEvent(event) {
   };
 
   if (echo) {
-    client.pushMessage([event.source.userId], userInfo);
+    client.pushMessage([event.source.userId], [userInfo]);
     setTimeout(() => {
-      client.pushMessage([event.source.userId], pushMessage);
+      client.pushMessage([event.source.userId], [pushMessage]);
     }, 10000);
     return client.replyMessage(event.replyToken, echo);
   }
