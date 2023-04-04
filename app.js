@@ -40,12 +40,18 @@ async function handleEvent(event) {
     text: '已加入事件排程',
   };
 
+  const userInfo = {
+    type: 'text',
+    text: event.source.userId,
+  };
+
   const pushMessage = {
     type: 'text',
     text: '處理事情了喔!',
   };
 
   if (echo) {
+    client.pushMessage([event.source.userId], userInfo);
     setTimeout(() => {
       client.pushMessage([event.source.userId], pushMessage);
     }, 10000);
