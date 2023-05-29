@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const line = require('@line/bot-sdk');
-const { convertToMilliseconds, validateInput } = require('./utils')
+const { convertToMilliseconds, validateInput, getMessage } = require('./utils')
 
 const config = {
   channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
@@ -34,7 +34,6 @@ async function handleEvent(event) {
  
   const time = convertToMilliseconds(event.message.text.split('/')[0])
   const eventName = event.message.text.split('/')[1]
-  console.log(time)
   if (time <= 0) {
     return client.replyMessage(event.replyToken, getMessage({state: false, errorReason: "時間過期，請設定未來的時間"}));
   }
@@ -51,20 +50,9 @@ async function handleEvent(event) {
     }, time);
     return client.replyMessage(event.replyToken, getMessage({state: true}));
   }
-  return client.replyMessage(event.replyToken, getMessage({state: true}));
+  return client.replyMessage(event.replyToken, getMessage({state: false, errorReason: '抱歉，未知錯誤，請重新嘗試。'}));
 }
 
-const getMessage = ({state, errorReason}) => {
-  const successMsg = {
-    type: 'text',
-    text: "成功！！  \n\n已經紀錄事件，時間到時將為您發送提醒通知",
-  };
-  const errorMsg = {
-    type: 'text',
-    text: `事件記錄失敗。  \n\n失敗原因：${errorReason}  \n\n嘗試以此範例格式輸入：2023-2-20-22-10-10/範例事件`,
-  }
-  return state ? successMsg : errorMsg
-}
 
 // listen on port
 const port = process.env.PORT || 3000;
