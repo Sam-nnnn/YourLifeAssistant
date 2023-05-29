@@ -1,7 +1,7 @@
 {
-  "name": "lifeEventBot",
+  "name": "your-life-assistant",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Line bot that enables users to set up event reminders and never miss important activities.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,7 +13,6 @@
   "dependencies": {
     "@line/bot-sdk": "^7.5.2",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "openai": "^3.2.1"
+    "express": "^4.18.2"
   }
 }
