@@ -27,3 +27,7 @@
 ### 回到 Line Developers Messaging API 設定 Webhook URL 為剛剛的部署網址，並開啟 Use webhook 功能。
 
 ### 使用 Line 加入創立的官方帳號，並開始使用事件提醒功能！
+
+## 注意事項！
+
+### 目前使用時區為正8區時間，若需要調整請至./utils/formatDate.js中調整return數值。
