@@ -33,15 +33,15 @@ async function handleEvent(event) {
   }
 
   const time = convertToMilliseconds(event.message.text.split('/')[0])
-  const event = event.message.text.split('/')[1]
+  const eventName = event.message.text.split('/')[1]
   if (time <= 0) {
     return client.replyMessage(event.replyToken, getMessage({state: false, errorReason: "時間過期，請設定未來的時間"}));
   }
-  if (!!event) {
+  if (!!eventName) {
     return client.replyMessage(event.replyToken, getMessage({state: false, errorReason: "未設定事件名稱"}));
   }
 
-  if (time > 0 && !!event) {
+  if (time > 0 && !!eventName) {
     // setTimeout(() => {
     //   client.pushMessage(event.source.userId, [pushMessage]);
     // }, time);
