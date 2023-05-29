@@ -26,38 +26,42 @@ async function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
     return Promise.resolve(null);
   }
-
+ 
   const isValid = validateInput(event.message.text)
   if (isValid.state === false) {
     return client.replyMessage(event.replyToken, getMessage({state: false, errorReason: isValid.message}));
   }
-
+ 
   const time = convertToMilliseconds(event.message.text.split('/')[0])
   const eventName = event.message.text.split('/')[1]
+  console.log(time)
   if (time <= 0) {
     return client.replyMessage(event.replyToken, getMessage({state: false, errorReason: "時間過期，請設定未來的時間"}));
   }
-  if (!!eventName) {
+  if (!eventName) {
     return client.replyMessage(event.replyToken, getMessage({state: false, errorReason: "未設定事件名稱"}));
   }
-
+ 
   if (time > 0 && !!eventName) {
-    // setTimeout(() => {
-    //   client.pushMessage(event.source.userId, [pushMessage]);
-    // }, time);
+    setTimeout(() => {
+      client.pushMessage(event.source.userId, [{
+        type: 'text',
+        text: `您設定的提醒時間已到。 \n\n事件名稱：${eventName}。 \n\n不要忘記了唷`,
+      }]);
+    }, time);
     return client.replyMessage(event.replyToken, getMessage({state: true}));
   }
-
+  return client.replyMessage(event.replyToken, getMessage({state: true}));
 }
 
 const getMessage = ({state, errorReason}) => {
   const successMsg = {
     type: 'text',
-    text: "成功！！ \n 已經紀錄事件，時間到時將為您發送提醒通知",
+    text: "成功！！  \n\n已經紀錄事件，時間到時將為您發送提醒通知",
   };
   const errorMsg = {
     type: 'text',
-    text: `事件記錄失敗。 \n 失敗原因：${errorReason} \n 嘗試以此範例格式輸入：2023-2-20-22-10-10/範例事件`,
+    text: `事件記錄失敗。  \n\n失敗原因：${errorReason}  \n\n嘗試以此範例格式輸入：2023-2-20-22-10-10/範例事件`,
   }
   return state ? successMsg : errorMsg
 }
