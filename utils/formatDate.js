@@ -14,7 +14,7 @@ function convertToMilliseconds(stringDate) {
     const millisecondsDiff = targetDate.getTime() - currentTime.getTime();
  
   
-    return millisecondsDiff;
+    return millisecondsDiff - (8 * 60 * 60 * 1000); //轉換為正8區時間
 }
  
 
