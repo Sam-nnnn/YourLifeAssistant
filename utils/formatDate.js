@@ -1,5 +1,5 @@
  
-function convertToMilliseconds({stringDate}) {
+function convertToMilliseconds(stringDate) {
     const parts = stringDate.split('-');
     const year = parseInt(parts[0]);
     const month = parseInt(parts[1]) - 1; 
@@ -12,6 +12,7 @@ function convertToMilliseconds({stringDate}) {
     const currentTime = new Date();
   
     const millisecondsDiff = targetDate.getTime() - currentTime.getTime();
+ 
   
     return millisecondsDiff;
 }
