@@ -1,0 +1,49 @@
+Arguments: 
+  /opt/homebrew/Cellar/node/20.0.0/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js install
+
+PATH: 
+  /opt/homebrew/lib/ruby/gems/3.1.0/bin:/opt/homebrew/lib/ruby/gems/3.1.0/bin:/opt/homebrew/opt/ruby@3.1/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/homebrew/lib/ruby/gems/3.1.0/bin:/opt/homebrew/opt/ruby@3.1/bin:/opt/homebrew/bin:/opt/homebrew/sbin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  20.0.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error [ERR_SOCKET_CONNECTION_TIMEOUT]: Socket connection timeout
+      at new NodeError (node:internal/errors:399:5)
+      at internalConnectMultiple (node:net:1098:20)
+      at Timeout.internalConnectMultipleTimeout (node:net:1637:3)
+      at listOnTimeout (node:internal/timers:575:11)
+      at process.processTimers (node:internal/timers:514:7)
+
+npm manifest: 
+  {
+    "name": "GPT3.5",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node app.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "@line/bot-sdk": "^7.5.2",
+      "dotenv": "^16.0.3",
+      "express": "^4.18.2",
+      "openai": "^3.2.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
